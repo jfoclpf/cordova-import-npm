@@ -1,6 +1,6 @@
 {
   "name": "cordova-import-npm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Import files from npm packages into your cordova www directory automatically, upon cordova prepare or cordova build",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
