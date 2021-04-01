@@ -10,7 +10,7 @@ Just run in the root directory of your cordova project
 
 `npm i cordova-import-npm`
 
-It will add a hook at hooks/ and edit your `config.xml` accordingly, such that npm files that you define will be imported upon `cordova prepare` or `cordova build`
+It will add a hook at your hooks directory (if you have none defined in `config.xml` it will use `hooks/`) and edit your `config.xml` accordingly, such that npm files that you set will be imported upon `cordova prepare` or `cordova build`
 
 ## Settings
 
@@ -30,10 +30,11 @@ Use an array to copy more than one file for each package.
 
 ## Example
 
-Imagine you want the latest jquery and bootsrap files on your `www/js/res/` and `www/css/res/ directories`. Just run
+Imagine you wanted the latest jquery and bootsrap files on your `www/js/res/` and `www/css/res/` directories. Just run
 
 ```
 npm i cordova-import-npm
+npm i jquery bootstrap
 ```
 
 And then edit your `npmFilesToImport.json` with this info:
@@ -57,4 +58,4 @@ And then edit your `npmFilesToImport.json` with this info:
 }
 ```
 
-Then run `cordova prepare` or `cordova build` and the npm files will be copied.
+Then run `cordova prepare` or `cordova build` and the npm files will be copied before anything else is processed.

@@ -1,5 +1,7 @@
+const fs = require('fs')
 const fse = require('fs-extra')
 const path = require('path')
+const colors = require('colors/safe')
 
 const twoSpaces = '  ' // for log indentation
 
@@ -10,24 +12,33 @@ module.exports = function (context) {
 
   projectRoot = context.opts.projectRoot
   console.log(twoSpaces + 'Project root directory: ' + projectRoot)
-  copyFile('jquery', path.join('dist', 'jquery.min.js'), path.join('js', 'res', 'jquery.min.js'))
 
-  copyFile('bootstrap', path.join('dist', 'js', 'bootstrap.min.js'), path.join('js', 'res', 'bootstrap.min.js'))
-  copyFile('bootstrap', path.join('dist', 'css', 'bootstrap.min.css'), path.join('css', 'res', 'bootstrap.min.css'))
+  var npmFilesToImportFileName = context.isThisATest ? 'npmFilesToImport_Example.json' : 'npmFilesToImport.json'
+  console.log(twoSpaces + 'Importing npm files to copy from ' + colors.cyan(npmFilesToImportFileName) + '\n')
 
-  copyFile('jAlert', path.join('dist', 'jAlert.min.js'), path.join('js', 'res', 'jAlert.min.js'))
-  copyFile('jAlert', path.join('dist', 'jAlert.css'), path.join('css', 'res', 'jAlert.css'))
+  var rawdata = fs.readFileSync(npmFilesToImportFileName, 'utf8')
+  try {
+    var npmFilesToImport = JSON.parse(rawdata);
+  } catch(e) {
+    console.log(colors.red(`\nERROR: Your JSON file "${npmFilesToImportFileName}" has syntax errors:\n`))
+    console.log(rawdata)
+    process.exit(1)
+  }
 
-  copyFile('leaflet', path.join('dist', 'leaflet.js'), path.join('js', 'res', 'leaflet.js'))
-  copyFile('leaflet', path.join('dist', 'leaflet.css'), path.join('css', 'res', 'leaflet.css'))
-
-  copyFile('leaflet.markercluster', path.join('dist', 'leaflet.markercluster.js'), path.join('js', 'res', 'leaflet.markercluster.js'))
-  copyFile('leaflet.markercluster', path.join('dist', 'MarkerCluster.css'), path.join('css', 'res', 'MarkerCluster.css'))
-  copyFile('leaflet.markercluster', path.join('dist', 'MarkerCluster.Default.css'), path.join('css', 'res', 'MarkerCluster.Default.css'))
-
-  copyFile('crypto-js', path.join('crypto-js.js'), path.join('js', 'res', 'crypto-js.js'))
-
-  copyFile('google-android-app-ids', path.join('dist', 'google-app-ids.json'), path.join('js', 'res', 'google-app-ids.json'))
+  for (let npmPackage in npmFilesToImport) {
+    let npmFiles = npmFilesToImport[npmPackage]
+    if (!Array.isArray(npmFiles) && typeof npmFiles === 'object') {
+      copyFile(npmPackage, path.join.apply(this, npmFiles.from), path.join.apply(this, npmFiles.to))
+    } else if (Array.isArray(npmFiles)){
+      for (let i = 0; i < npmFiles.length; i++) {
+        npmFilesI = npmFiles[i]
+        copyFile(npmPackage, path.join.apply(this, npmFilesI.from), path.join.apply(this, npmFilesI.to))
+      }
+    } else {
+      console.log(colors.red(`JSON file "${npmFilesToImportFileName}" has good syntax but fails template, see readme on https://www.npmjs.com/package/cordova-import-npm`))
+      process.exit(1)
+    }
+  }
 }
 
 function copyFile (npmPackage, // oficial name of the npm package from which the file is to be copied from
@@ -41,7 +52,7 @@ function copyFile (npmPackage, // oficial name of the npm package from which the
 
   fse.copySync(fileOriginFullPath, fileDestFullPath)
 
-  const consoleMsg = npmPackage + ': ' +
+  const consoleMsg = colors.cyan(npmPackage) + ': ' +
     path.relative(projectRoot, fileOriginFullPath) + ' -> ' +
     path.relative(projectRoot, fileDestFullPath)
 

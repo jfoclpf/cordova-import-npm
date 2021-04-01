@@ -3,7 +3,8 @@
   "version": "1.0.1",
   "description": "Import files from npm packages into your cordova www directory automatically, upon cordova prepare or cordova build",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm i jquery bootstrap && node test.js && npm remove jquery bootstrap && echo \"TEST OK\"",
+    "postinstall": "node onInstall.js"
   },
   "keywords": [
     "cordova"
@@ -13,5 +14,9 @@
     "url": "git://github.com/jfoclpf/cordova-import-npm.git"
   },
   "author": "João Pimentel Ferreira",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "fs-extra": "^9.1.0"
+  }
 }
