@@ -1,6 +1,6 @@
 # On development, don't use this yet...
 # cordova-import-npm
-Import files from npm packages into your cordova www directory automatically, upon cordova prepare or cordova build
+Import files from npm packages into your cordova `www/` directory automatically, upon `cordova prepare` or `cordova build`
 
 Oftentimes we want to import files available in npm modules into our `www/` directory in cordova projects.
 
