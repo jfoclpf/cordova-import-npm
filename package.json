@@ -3,8 +3,8 @@
   "version": "1.0.3",
   "description": "Import files from npm packages into your cordova www directory automatically, upon cordova prepare or cordova build",
   "scripts": {
-    "test": "npm i jquery bootstrap && node test.js && npm remove jquery bootstrap && echo \"TEST OK\"",
-    "postinstall": "node onInstall.js"
+    "test": "npm i jquery bootstrap && node test/test.js && npm remove jquery bootstrap && node scripts/postinstall.js --test && echo \"TEST OK\"",
+    "postinstall": "node postinstall.js"
   },
   "keywords": [
     "cordova"
@@ -17,6 +17,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "colors": "^1.4.0",
-    "fs-extra": "^9.1.0"
+    "fs-extra": "^9.1.0",
+    "xml2js": "^0.4.23"
   }
 }
