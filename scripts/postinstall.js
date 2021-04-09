@@ -8,6 +8,7 @@ const colors = require('colors/safe')
 
 // const isTest = process.argv[2] === '--test'
 console.log('Postinstall script running on ' + colors.cyan(__dirname))
+process.exitCode = 0
 
 /*
 var configXmlFileName = isTest ? path.join(__dirname, '..', 'test', 'config.xml') : 'config.xml'
