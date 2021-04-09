@@ -1,6 +1,6 @@
 {
   "name": "cordova-import-npm",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Import files from npm packages into your cordova www directory automatically, upon cordova prepare or cordova build",
   "scripts": {
     "test": "standard && npm i jquery bootstrap && node test/test.js && npm remove jquery bootstrap && node scripts/postinstall.js --test && echo \"TEST OK\""
