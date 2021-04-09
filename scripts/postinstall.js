@@ -1,12 +1,12 @@
-const fs = require('fs')
-const fse = require('fs-extra')
-const path = require('path')
+// const fs = require('fs')
+// const fse = require('fs-extra')
+// const path = require('path')
 const colors = require('colors/safe')
 
-const xml2js = require('xml2js')
-const parser = new xml2js.Parser()
+// const xml2js = require('xml2js')
+// const parser = new xml2js.Parser()
 
-var isTest = process.argv[2] === '--test'
+// const isTest = process.argv[2] === '--test'
 console.log('Postinstall script running on ' + colors.cyan(__dirname))
 
 /*

@@ -5,7 +5,7 @@ const colors = require('colors/safe')
 
 const twoSpaces = '  ' // for log indentation
 
-var projectRoot
+let projectRoot
 
 module.exports = function (context) {
   console.log(`${context.hook} : ${path.relative(context.opts.projectRoot, context.scriptLocation)}`)
@@ -13,25 +13,26 @@ module.exports = function (context) {
   projectRoot = context.opts.projectRoot
   console.log(twoSpaces + 'Project root directory: ' + projectRoot)
 
-  var npmFilesToImportFileName = path.join(__dirname, 'npmFilesToImport.json')
+  const npmFilesToImportFileName = path.join(__dirname, 'npmFilesToImport.json')
   console.log(twoSpaces + 'Importing npm files to copy from ' + colors.cyan(npmFilesToImportFileName) + '\n')
 
-  var rawdata = fs.readFileSync(npmFilesToImportFileName, 'utf8')
+  const rawdata = fs.readFileSync(npmFilesToImportFileName, 'utf8')
+  let npmFilesToImport
   try {
-    var npmFilesToImport = JSON.parse(rawdata);
-  } catch(e) {
+    npmFilesToImport = JSON.parse(rawdata)
+  } catch (e) {
     console.log(colors.red(`\nERROR: Your JSON file "${npmFilesToImportFileName}" has syntax errors:\n`))
     console.log(rawdata)
     process.exit(1)
   }
 
-  for (let npmPackage in npmFilesToImport) {
-    let npmFiles = npmFilesToImport[npmPackage]
+  for (const npmPackage in npmFilesToImport) {
+    const npmFiles = npmFilesToImport[npmPackage]
     if (!Array.isArray(npmFiles) && typeof npmFiles === 'object') {
       copyFile(npmPackage, path.join.apply(this, npmFiles.from), path.join.apply(this, npmFiles.to))
-    } else if (Array.isArray(npmFiles)){
+    } else if (Array.isArray(npmFiles)) {
       for (let i = 0; i < npmFiles.length; i++) {
-        npmFilesI = npmFiles[i]
+        const npmFilesI = npmFiles[i]
         copyFile(npmPackage, path.join.apply(this, npmFilesI.from), path.join.apply(this, npmFilesI.to))
       }
     } else {
