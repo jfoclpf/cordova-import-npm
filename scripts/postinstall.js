@@ -7,7 +7,7 @@ const colors = require('colors/safe')
 // const parser = new xml2js.Parser()
 
 // const isTest = process.argv[2] === '--test'
-console.log('Postinstall script running on ' + colors.cyan(__dirname))
+console.log('Postinstall script running on ' + colors.cyan(process.env.INIT_CWD))
 process.exitCode = 0
 
 /*
