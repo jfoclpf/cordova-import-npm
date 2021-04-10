@@ -1,18 +1,20 @@
-# On development, don't use this yet...
 # cordova-import-npm
-Import files from npm packages into your cordova `www/` directory automatically, upon `cordova prepare` or `cordova build`
+Import files from npm packages into your cordova `www/` directory automatically, upon `cordova prepare` or `cordova build`.
 
-Oftentimes we want to import files available in npm modules into our `www/` directory in cordova projects. With this module you can do it automatically.
+Oftentimes we want to import files available in npm modules into our `www/` directory in cordova projects. With this module you can do it automatically without building your own scripts.
 
-## Install
+## Install and setup
 
 Just run in the root directory of your cordova project
 
-`npm i cordova-import-npm`
+```
+npm install cordova-import-npm
+npx setup-cordova-import-npm
+```
 
-It will add a hook at your hooks directory (if you have none defined in `config.xml` it will use `hooks/`) and edit your `config.xml` accordingly, such that npm files that you set will be imported upon `cordova prepare` or `cordova build`
+It will add a hook into `config.xml` with the type `before_prepare`, such that npm files that you setup will be imported automatically upon `cordova prepare` or `cordova build`. It will also create an empty file `npmFilesToImport.json` at the root of your project for you to setup.
 
-## Settings
+## Setting `npmFilesToImport.json`
 
 You define the npm files you'd like to import by editing the file `npmFilesToImport.json`. The syntax is the following:
 
@@ -26,15 +28,17 @@ You define the npm files you'd like to import by editing the file `npmFilesToImp
 ```
 
 The paths may be strings or arrays, though arrays are recommended as then it works in either unix or windows file systems.
-Use an array to copy more than one file for each package.
+
+Use an array of objects `{from:, to:}` to copy more than one file for each package.
 
 ## Example
 
-Imagine you wanted the latest jquery and bootsrap files on your `www/js/res/` and `www/css/res/` directories. Just run
+Imagine you wanted the latest jquery and bootsrap files on your `www/js/res/` and `www/css/res/` directories. Just run:
 
 ```
-npm i cordova-import-npm
-npm i jquery bootstrap
+npm install jquery bootstrap
+npm install cordova-import-npm
+npx setup-cordova-import-npm
 ```
 
 And then edit your `npmFilesToImport.json` with this info:
@@ -58,4 +62,4 @@ And then edit your `npmFilesToImport.json` with this info:
 }
 ```
 
-Then run `cordova prepare` or `cordova build` and the npm files will be copied before anything else is processed.
+Then every time you run `cordova prepare` or `cordova build`, the npm files will be copied before anything else is processed, from the respective package modules to the `www/` directory.
