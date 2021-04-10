@@ -68,12 +68,36 @@ parser.parseString(rawdata, function (err, result) {
   const xml = builder.buildObject(xmlObj)
   fs.writeFileSync(configXmlFileName, xml, 'utf8')
   console.log(colors.green('config.xml edited with success'))
+
+  if (!isTest) {
+    createnJsonFile()
+  }
 })
+
+function createnJsonFile () {
+  if (isTest) { return }
+
+  const jsonFile = path.join(process.env.INIT_CWD, 'npmFilesToImport.json')
+
+  try {
+    if (fs.existsSync(jsonFile)) {
+      console.log(`File ${jsonFile} already exists, doing nothing`)
+    }
+    const fileContent = JSON.stringify({})
+    fs.writeFileSync(configXmlFileName, fileContent, 'utf8')
+
+    console.log(`Empty file ${colors.cyan(jsonFile)} created`)
+    console.log('For syntax on this file check: ' + colors.cyan('https://github.com/jfoclpf/cordova-import-npm'))
+  } catch (err) {
+    console.error(err)
+    process.exitCode = 1
+  }
+}
 
 function throwInvalidConfigXml (msg) {
   console.log(colors.red('Invalid config.xml file'))
   if (msg) {
     console.log(msg)
   }
-  process.exit(1)
+  process.exitCode = 1
 }
