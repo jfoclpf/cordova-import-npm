@@ -13,7 +13,7 @@ module.exports = function (context) {
   projectRoot = context.opts.projectRoot
   console.log(twoSpaces + 'Project root directory: ' + projectRoot)
 
-  const npmFilesToImportFileName = path.join(__dirname, 'npmFilesToImport.json')
+  const npmFilesToImportFileName = path.join(projectRoot, 'npmFilesToImport.json')
   console.log(twoSpaces + 'Importing npm files to copy from ' + colors.cyan(npmFilesToImportFileName) + '\n')
 
   const rawdata = fs.readFileSync(npmFilesToImportFileName, 'utf8')
