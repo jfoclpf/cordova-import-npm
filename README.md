@@ -57,8 +57,8 @@ And then edit your `npmFilesToImport.json` with this info:
     {
       "from": ["dist", "css", "bootstrap.min.css"],
       "to": ["css", "res", "bootstrap.min.css"]
-    },
-  ],
+    }
+  ]
 }
 ```
 

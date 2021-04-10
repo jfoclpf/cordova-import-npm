@@ -21,6 +21,7 @@ module.exports = function (context) {
   try {
     npmFilesToImport = JSON.parse(rawdata)
   } catch (e) {
+    console.log(e)
     console.log(colors.red(`\nERROR: Your JSON file "${npmFilesToImportFileName}" has syntax errors:\n`))
     console.log(rawdata)
     process.exit(1)
