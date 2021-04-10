@@ -82,12 +82,13 @@ function createnJsonFile () {
   try {
     if (fs.existsSync(jsonFile)) {
       console.log(`File ${jsonFile} already exists, doing nothing`)
-    }
-    const fileContent = JSON.stringify({})
-    fs.writeFileSync(configXmlFileName, fileContent, 'utf8')
+    } else {
+      const fileContent = JSON.stringify({})
+      fs.writeFileSync(jsonFile, fileContent, 'utf8')
 
-    console.log(`Empty file ${colors.cyan(jsonFile)} created`)
-    console.log('For syntax on this file check: ' + colors.cyan('https://github.com/jfoclpf/cordova-import-npm'))
+      console.log(`Empty file ${colors.cyan(jsonFile)} created`)
+      console.log('For syntax on this file check: ' + colors.cyan('https://github.com/jfoclpf/cordova-import-npm'))
+    }
   } catch (err) {
     console.error(err)
     process.exitCode = 1
