@@ -1,0 +1,16 @@
+{
+  "jquery": {
+    "from": ["dist", "jquery.min.js"],
+    "to": ["js", "res", "jquery.min.js"]
+  },
+  "bootstrap": [
+    {
+      "from": ["dist", "js", "bootstrap.min.js"],
+      "to": ["js", "res", "bootstrap.min.js"]
+    },
+    {
+      "from": ["dist", "css", "bootstrap.min.css"],
+      "to": ["css", "res", "bootstrap.min.css"]
+    },
+  ],
+}

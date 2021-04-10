@@ -5,7 +5,9 @@
   "scripts": {
     "test": "standard && npm i jquery bootstrap && node test/test.js && npm remove jquery bootstrap && node scripts/postinstall.js --test && echo \"TEST OK\""
   },
-  "bin": "./scripts/postinstall.js",
+  "bin": {
+    "setup-cordova-import-npm": "./scripts/postinstall.js"
+  },
   "keywords": [
     "cordova"
   ],

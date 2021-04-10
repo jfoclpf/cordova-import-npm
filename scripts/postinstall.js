@@ -21,14 +21,25 @@ console.log(`Reading file ${colors.cyan(configXmlFileName)}`)
 const rawdata = fs.readFileSync(configXmlFileName, 'utf8')
 parser.parseString(rawdata, function (err, result) {
   if (err) {
-    console.log(colors.red('Invalid config.xml file'))
-    console.log(err)
-    return
+    throwInvalidConfigXml(err)
   }
 
-  if (result.hook) {
-    console.log('Hook already detected and using directory ' + colors.cyan(result.hook))
-    console.log(result.hook)
+  const main = result.widget
+  if (!main) {
+    throwInvalidConfigXml('no widget')
+  }
+
+  if (main.hook) {
+    const hookDir = main.hook[0].$.src
+    console.log('Hook already detected and using directory ' + colors.cyan(hookDir))
   }
   console.log(result)
 })
+
+function throwInvalidConfigXml (msg) {
+  console.log(colors.red('Invalid config.xml file'))
+  if (msg) {
+    console.log(msg)
+  }
+  process.exit(1)
+}
