@@ -13,7 +13,7 @@ const importNpmPackagesFilePath = path.join('node_modules', 'cordova-import-npm'
 
 const isTest = process.argv[2] === '--test'
 if (!isTest) {
-  console.log('Setup script running on ' + colors.cyan(process.env.INIT_CWD))
+  console.log('Setup script called from ' + colors.cyan(process.env.INIT_CWD))
 }
 
 process.exitCode = 0 // no error
@@ -51,6 +51,7 @@ parser.parseString(rawdata, function (err, result) {
     for (const hook of widget.hook) {
       if (hook.$.src === importNpmPackagesFilePath) {
         console.log(`Hook ${colors.cyan(importNpmPackagesFilePath)} already exists in config.xml, doing nothing`)
+        createnJsonFile()
         return
       }
     }
@@ -69,9 +70,7 @@ parser.parseString(rawdata, function (err, result) {
   fs.writeFileSync(configXmlFileName, xml, 'utf8')
   console.log(colors.green('config.xml edited with success'))
 
-  if (!isTest) {
-    createnJsonFile()
-  }
+  createnJsonFile()
 })
 
 function createnJsonFile () {
