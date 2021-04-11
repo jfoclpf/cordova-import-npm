@@ -35,7 +35,7 @@ parser.parseString(rawdata, function (err, result) {
 
   const widget = xmlObj.widget
   if (!widget) {
-    throwInvalidConfigXml('no widget')
+    throwInvalidConfigXml('No widget in config.xml')
   }
 
   const newHook = {

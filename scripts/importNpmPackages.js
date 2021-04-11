@@ -20,21 +20,53 @@ module.exports = function (context) {
   let npmFilesToImport
   try {
     npmFilesToImport = JSON.parse(rawdata)
-  } catch (e) {
-    console.log(e)
+  } catch (err) {
+    console.log(err)
     console.log(colors.red(`\nERROR: Your JSON file "${npmFilesToImportFileName}" has syntax errors:\n`))
     console.log(rawdata)
     process.exit(1)
   }
 
+  const throwJsonError = function (msg) {
+    if (msg) {
+      console.log(colors.red(msg), '\n')
+    }
+    console.log(colors.red(`JSON file "${npmFilesToImportFileName}" has good syntax but fails template, see readme on https://www.npmjs.com/package/cordova-import-npm`))
+    process.exit(1)
+  }
+
   for (const npmPackage in npmFilesToImport) {
     const npmFiles = npmFilesToImport[npmPackage]
+
     if (!Array.isArray(npmFiles) && typeof npmFiles === 'object') {
-      copyFile(npmPackage, path.join.apply(this, npmFiles.from), path.join.apply(this, npmFiles.to))
+      // in case just one file is copied for the npm package
+      if (!(Array.isArray(npmFiles.from) || typeof npmFiles.from === 'string')) {
+        throwJsonError(`Path "${npmFiles.from}" related to package ${npmPackage} must be string or array`)
+      }
+      if (!(Array.isArray(npmFiles.to) || typeof npmFiles.to === 'string')) {
+        throwJsonError(`Path "${npmFiles.to}" related to package ${npmPackage} must be string or array`)
+      }
+
+      copyFile(npmPackage,
+        Array.isArray(npmFiles.from) ? path.join.apply(this, npmFiles.from) : npmFiles.from,
+        Array.isArray(npmFiles.to) ? path.join.apply(this, npmFiles.to) : npmFiles.to
+      )
     } else if (Array.isArray(npmFiles)) {
+      // in case several files are copied for the npm package
       for (let i = 0; i < npmFiles.length; i++) {
         const npmFilesI = npmFiles[i]
-        copyFile(npmPackage, path.join.apply(this, npmFilesI.from), path.join.apply(this, npmFilesI.to))
+
+        if (!(Array.isArray(npmFilesI.from) || typeof npmFilesI.from === 'string')) {
+          throwJsonError(`Path "${npmFilesI.from}" related to package ${npmPackage} must be string or array`)
+        }
+        if (!(Array.isArray(npmFilesI.to) || typeof npmFilesI.to === 'string')) {
+          throwJsonError(`Path "${npmFilesI.to}" related to package ${npmPackage} must be string or array`)
+        }
+
+        copyFile(npmPackage,
+          Array.isArray(npmFilesI.from) ? path.join.apply(this, npmFilesI.from) : npmFilesI.from,
+          Array.isArray(npmFilesI.to) ? path.join.apply(this, npmFilesI.to) : npmFilesI.to
+        )
       }
     } else {
       console.log(colors.red(`JSON file "${npmFilesToImportFileName}" has good syntax but fails template, see readme on https://www.npmjs.com/package/cordova-import-npm`))
