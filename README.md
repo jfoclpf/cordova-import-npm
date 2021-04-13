@@ -12,11 +12,11 @@ npm install cordova-import-npm
 npx setup-cordova-import-npm
 ```
 
-It will add a hook into `config.xml` with the type `before_prepare`, such that npm files that you setup will be imported automatically upon `cordova prepare` or `cordova build`. It will also create an empty file `npmFilesToImport.json` at the root of your project for you to setup.
+It will add a [hook](https://cordova.apache.org/docs/en/10.x/guide/appdev/hooks/index.html) into `config.xml` with the type `before_prepare`, such that npm files that you setup will be imported automatically upon `cordova prepare`, `cordova build` or `cordova run`. It will also create an empty file `npmFilesToImport.json` at the root of your project for you to setup.
 
 ## Setting `npmFilesToImport.json`
 
-You define the npm files you'd like to import by editing the file `npmFilesToImport.json`. The syntax is the following:
+You define the npm files you'd like to import by editing the file `npmFilesToImport.json` at the root of the project's directory. The syntax is the following:
 
 ```json
 {
