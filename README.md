@@ -33,7 +33,7 @@ Use an array of objects `{from:, to:}` to copy more than one file for each packa
 
 ## Example
 
-Imagine you wanted the latest jquery and bootsrap files on your `www/js/res/` and `www/css/res/` directories. Just run:
+Imagine you wanted the latest jquery and bootstrap files on your `www/js/res/` and `www/css/res/` directories. Just run:
 
 ```
 npm install jquery bootstrap
