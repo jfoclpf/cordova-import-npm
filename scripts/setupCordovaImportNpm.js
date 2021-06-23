@@ -9,7 +9,7 @@ const xml2js = require('xml2js')
 const parser = new xml2js.Parser()
 const builder = new xml2js.Builder()
 
-const importNpmPackagesFilePath = path.join('node_modules', 'cordova-import-npm', 'scripts', 'importNpmPackages.js')
+const importNpmPackagesFilePath = 'node_modules/cordova-import-npm/scripts/importNpmPackages.js'
 
 const isTest = process.argv[2] === '--test'
 if (!isTest) {
@@ -39,7 +39,7 @@ parser.parseString(rawdata, function (err, result) {
   }
 
   const newHook = {
-    $: { src: 'node_modules/cordova-import-npm/scripts/importNpmPackages.js', type: 'before_prepare' }
+    $: { src: importNpmPackagesFilePath, type: 'before_prepare' }
   }
 
   if (widget.hook) {
