@@ -39,7 +39,7 @@ parser.parseString(rawdata, function (err, result) {
   }
 
   const newHook = {
-    $: { src: importNpmPackagesFilePath, type: 'before_prepare' }
+    $: { src: 'node_modules/cordova-import-npm/scripts/importNpmPackages.js', type: 'before_prepare' }
   }
 
   if (widget.hook) {
