@@ -11,16 +11,20 @@ const builder = new xml2js.Builder()
 
 const importNpmPackagesFilePath = 'node_modules/cordova-import-npm/scripts/importNpmPackages.js'
 
+// the directory from which the command npx is being called/run
+// which according to setup instructions is the root directory of the main module which depends on this module
+const projectRootDirectory = process.env.INIT_CWD || process.cwd()
+
 const isTest = process.argv[2] === '--test'
 if (!isTest) {
-  console.log('Setup script called from ' + colors.cyan(process.env.INIT_CWD))
+  console.log('Setup script called from ' + colors.cyan(projectRootDirectory))
 }
 
 process.exitCode = 0 // no error
 
 const configXmlFileName = isTest
   ? path.join(__dirname, '..', 'test', 'config.xml')
-  : path.join(process.env.INIT_CWD || process.cwd(), 'config.xml')
+  : path.join(projectRootDirectory, 'config.xml')
 
 console.log(`Editing config.xml:${colors.cyan(configXmlFileName)}`)
 
@@ -76,7 +80,7 @@ parser.parseString(rawdata, function (err, result) {
 function createnJsonFile () {
   if (isTest) { return }
 
-  const jsonFile = path.join(process.env.INIT_CWD, 'npmFilesToImport.json')
+  const jsonFile = path.join(projectRootDirectory, 'npmFilesToImport.json')
 
   try {
     if (fs.existsSync(jsonFile)) {
