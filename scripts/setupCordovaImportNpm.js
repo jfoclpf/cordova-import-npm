@@ -20,7 +20,7 @@ process.exitCode = 0 // no error
 
 const configXmlFileName = isTest
   ? path.join(__dirname, '..', 'test', 'config.xml')
-  : path.join(process.env.INIT_CWD, 'config.xml')
+  : path.join(process.env.INIT_CWD || process.cwd(), 'config.xml')
 
 console.log(`Editing config.xml:${colors.cyan(configXmlFileName)}`)
 
