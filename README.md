@@ -7,8 +7,8 @@
 [![npm module downloads][npm_module_downloads_img]][npm_module_downloads_url]
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=J7F3ALLQAFWEJ)
 
-[npm_img]: https://img.shields.io/npm/v/autocosts.svg?colorB=0E7FBF
-[npm_url]: https://www.npmjs.com/package/autocosts
+[npm_img]: https://img.shields.io/npm/v/cordova-import-npm.svg?colorB=0E7FBF
+[npm_url]: https://www.npmjs.com/package/cordova-import-npm
 
 [npm_module_downloads_img]: https://img.shields.io/npm/dt/cordova-import-npm.svg
 [npm_module_downloads_url]: https://www.npmjs.com/package/cordova-import-npm
