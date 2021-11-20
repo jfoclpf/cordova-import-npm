@@ -1,7 +1,6 @@
 # cordova-import-npm
 
 [![Node.js CI](https://github.com/jfoclpf/cordova-import-npm/actions/workflows/node.js.yml/badge.svg)](https://github.com/jfoclpf/cordova-import-npm/actions/workflows/node.js.yml)
-[![Dependency Status][dependency status_img]][dependency status_url]
 [![js-standard-style][js-standard-style_img]][js-standard-style_url]
 [![npm][npm_img]][npm_url]
 [![npm module downloads][npm_module_downloads_img]][npm_module_downloads_url]
@@ -15,9 +14,6 @@
 
 [js-standard-style_img]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
 [js-standard-style_url]: https://standardjs.com/
-
-[dependency status_img]: https://david-dm.org/jfoclpf/cordova-import-npm.svg
-[dependency status_url]: https://david-dm.org/jfoclpf/cordova-import-npm
 
 Import files from npm packages into your cordova `www/` directory automatically, upon `cordova prepare`, `cordova build` or `cordova run`, and before anything else is processed.
 
