@@ -6,7 +6,9 @@
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/jfoclpf/cordova-import-npm.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jfoclpf/cordova-import-npm/context:javascript)
 [![npm][npm_img]][npm_url]
 [![npm module downloads][npm_module_downloads_img]][npm_module_downloads_url]
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=J7F3ALLQAFWEJ)
+<br>
+[![Donate with librepay](https://img.shields.io/liberapay/receives/joaopimentel1980.svg?logo=liberapay)](https://en.liberapay.com/joaopimentel1980)
+[![Donate with librepay](https://img.shields.io/badge/donate-Donate-yellow?logo=liberapay)](https://en.liberapay.com/joaopimentel1980/donate)
 
 [npm_img]: https://img.shields.io/npm/v/cordova-import-npm.svg?colorB=0E7FBF
 [npm_url]: https://www.npmjs.com/package/cordova-import-npm
