@@ -80,4 +80,10 @@ And then edit your `npmFilesToImport.json` with this info:
 }
 ```
 
-Then every time you run `cordova prepare`, `cordova build` or `cordova run`, the npm files will be copied before anything else is processed, from the respective package modules to the `www/` directory.
+Then every time you run `cordova prepare`, `cordova build` or `cordova run`, the npm files will be copied before anything else is processed, from the respective package modules to the `www/` directory:
+
+```
+jquery: node_modules/jquery/dist/jquery.min.js -> www/js/res/jquery.min.js
+bootstrap: node_modules/bootstrap/dist/js/bootstrap.min.js -> www/js/res/bootstrap.min.js
+bootstrap: node_modules/bootstrap/dist/css/bootstrap.min.css -> www/css/res/bootstrap.min.css
+```
