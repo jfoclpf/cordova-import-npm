@@ -2,8 +2,6 @@
 
 [![Node.js CI](https://github.com/jfoclpf/cordova-import-npm/actions/workflows/node.js.yml/badge.svg)](https://github.com/jfoclpf/cordova-import-npm/actions/workflows/node.js.yml)
 [![js-standard-style][js-standard-style_img]][js-standard-style_url]
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/jfoclpf/cordova-import-npm.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jfoclpf/cordova-import-npm/alerts/)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/jfoclpf/cordova-import-npm.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jfoclpf/cordova-import-npm/context:javascript)
 [![npm][npm_img]][npm_url]
 [![npm module downloads][npm_module_downloads_img]][npm_module_downloads_url]
 <br>
