@@ -2,15 +2,11 @@
 
 [![Node.js CI](https://github.com/jfoclpf/cordova-import-npm/actions/workflows/node.js.yml/badge.svg)](https://github.com/jfoclpf/cordova-import-npm/actions/workflows/node.js.yml)
 [![js-standard-style][js-standard-style_img]][js-standard-style_url]
-[![npm][npm_img]][npm_url]
 [![npm module downloads][npm_module_downloads_img]][npm_module_downloads_url]
 [![Known Vulnerabilities](https://snyk.io/test/github/jfoclpf/cordova-import-npm/badge.svg)](https://snyk.io/test/github/jfoclpf/cordova-import-npm)
 
 [![Donate with librepay](https://img.shields.io/liberapay/receives/joaopimentel1980.svg?logo=liberapay)](https://en.liberapay.com/joaopimentel1980)
 [![Donate with librepay](https://img.shields.io/badge/donate-Donate-yellow?logo=liberapay)](https://en.liberapay.com/joaopimentel1980/donate)
-
-[npm_img]: https://img.shields.io/npm/v/cordova-import-npm.svg?colorB=0E7FBF
-[npm_url]: https://www.npmjs.com/package/cordova-import-npm
 
 [npm_module_downloads_img]: https://img.shields.io/npm/dt/cordova-import-npm.svg
 [npm_module_downloads_url]: https://www.npmjs.com/package/cordova-import-npm
