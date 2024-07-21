@@ -5,9 +5,6 @@
 [![npm module downloads][npm_module_downloads_img]][npm_module_downloads_url]
 [![Known Vulnerabilities](https://snyk.io/test/github/jfoclpf/cordova-import-npm/badge.svg)](https://snyk.io/test/github/jfoclpf/cordova-import-npm)
 
-[![Donate with librepay](https://img.shields.io/liberapay/receives/joaopimentel1980.svg?logo=liberapay)](https://en.liberapay.com/joaopimentel1980)
-[![Donate with librepay](https://img.shields.io/badge/donate-Donate-yellow?logo=liberapay)](https://en.liberapay.com/joaopimentel1980/donate)
-
 [npm_module_downloads_img]: https://img.shields.io/npm/dt/cordova-import-npm.svg
 [npm_module_downloads_url]: https://www.npmjs.com/package/cordova-import-npm
 
